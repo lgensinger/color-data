@@ -1,0 +1,11 @@
+# use an official python runtime as parent image
+FROM python
+
+# copy needed directories into container
+ADD . /
+
+# install pythong requirements
+RUN cd scripts && pip install -e .
+
+# ingest data
+RUN python scripts/create-tables.py db 

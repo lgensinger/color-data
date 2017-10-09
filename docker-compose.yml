@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+
+  db:
+    container_name: color_db
+    image: postgres
+      
+  data:
+    build:
+      context: .
+      dockerfile: Dockerfile.data
+    container_name: color_data
+    depends_on: 
+      - db
+    image: color.data
+    links:
+      - db
+    environment:
+        - PGHOST=db
+        - PGDATABASE=postgres
+        - PGUSER=postgres
