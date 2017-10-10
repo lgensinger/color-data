@@ -4,8 +4,10 @@ FROM python
 # copy needed directories into container
 ADD . /
 
-# install pythong requirements
-RUN cd scripts && pip install -e .
+# install python requirements
+WORKDIR /scripts
+RUN pip install -e .
 
 # ingest data
-RUN python scripts/create-tables.py db 
+ENTRYPOINT ["python", "create-tables.py"]
+CMD ["db"]
