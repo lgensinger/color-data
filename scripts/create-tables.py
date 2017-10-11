@@ -20,6 +20,7 @@ def main():
             "description": "text"
         }
     )
-    
+    print("successfully created test table")
+
 if __name__ == "__main__":
     main()
